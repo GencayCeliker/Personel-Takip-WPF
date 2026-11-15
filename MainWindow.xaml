@@ -1,0 +1,103 @@
+﻿<Window x:Class="PersonelTakip_B.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PersonelTakip_B"
+        mc:Ignorable="d"
+        Title="Personel Takip Sistemi" Height="720" Width="900" WindowStartupLocation="CenterScreen">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Başlık -->
+            <RowDefinition Height="Auto"/>
+            <!-- Giriş Formu -->
+            <RowDefinition Height="*"/>
+            <!-- Personel Tablosu -->
+            <RowDefinition Height="220"/>
+            <!-- Görev Bölümü -->
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Personel Takip Sistemi" FontSize="18" FontWeight="Bold" Margin="0,5,0,10" Foreground="DarkSlateBlue"/>
+
+        <Border Grid.Row="1" BorderBrush="Purple" BorderThickness="1.5" Padding="10" CornerRadius="8" Background="#F9F9F9">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="180"/>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="180"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- 1. Satır: Ad ve Soyad -->
+                <Label Content="Ad:" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0"/>
+                <TextBox x:Name="txtAd" Grid.Row="0" Grid.Column="1" Margin="5" Height="25"/>
+
+                <Label Content="Soyad:" VerticalAlignment="Center" Grid.Row="0" Grid.Column="2"/>
+                <TextBox x:Name="txtSoyad" Grid.Row="0" Grid.Column="3" Margin="5" Height="25"/>
+
+                <!-- 2. Satır: Telefon ve Görev -->
+                <Label Content="Telefon:" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0"/>
+                <TextBox x:Name="txtTelefon" Grid.Row="1" Grid.Column="1" Margin="5" Height="25"/>
+
+                <Label Content="Görev:" VerticalAlignment="Center" Grid.Row="1" Grid.Column="2"/>
+                <ComboBox x:Name="txtCbb" Grid.Row="1" Grid.Column="3" Margin="5" Height="25" DisplayMemberPath="GorevAdi" SelectedValuePath="GorevID"/>
+
+                <!-- Butonlar Paneli -->
+                <StackPanel Grid.Row="2" Grid.ColumnSpan="5" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
+                    <Button x:Name="btnEkle" Content="EKLE" Width="90" Margin="5" Background="Aqua" FontWeight="Bold" Click="btnEkle_Click"/>
+                    <Button x:Name="btnGuncelle" Content="GÜNCELLE" Width="90" Margin="5" Background="LightGreen" FontWeight="Bold" Click="btnGuncelle_Click"/>
+                    <Button x:Name="btnSil" Content="SİL" Width="90" Margin="5" Background="Tomato" FontWeight="Bold" Click="btnSil_Click"/>
+                    <Button x:Name="btnTemizle" Content="TEMİZLE" Width="90" Margin="5" Background="Yellow" FontWeight="Bold" Click="btnTemizle_Click"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Personel Listesi -->
+        <GroupBox Grid.Row="2" Header="Personel Listesi" Margin="0,15,0,10" FontWeight="Bold">
+            <DataGrid x:Name="dgvPersonel" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True" MouseDoubleClick="dgv_MouseDoubleClick" FontWeight="Normal">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding PersonelID}" Width="50"/>
+                    <DataGridTextColumn Header="Ad" Binding="{Binding Ad}" Width="*"/>
+                    <DataGridTextColumn Header="Soyad" Binding="{Binding Soyad}" Width="*"/>
+                    <DataGridTextColumn Header="Telefon" Binding="{Binding Telefon}" Width="*"/>
+                    <DataGridTextColumn Header="Görev ID" Binding="{Binding GorevID}" Width="70"/>
+                    <DataGridTextColumn Header="Görev" Binding="{Binding GorevAdi}" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </GroupBox>
+
+        <!-- Görev Listesi -->
+        <GroupBox Grid.Row="3" Header="Görev Tanımlama" FontWeight="Bold">
+            <Grid Margin="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBox x:Name="txtGorevAdi" Height="30" Margin="5" VerticalContentAlignment="Center" FontWeight="Normal"/>
+                <Button x:Name="btnGorevEkle" Grid.Column="1" Content="Görev Ekle" Width="100" Margin="5" Click="btnGorevEkle_Click"/>
+                <Button x:Name="btnGorevSil" Grid.Column="2" Content="Görev Sil" Width="100" Margin="5" Click="btnGorevSil_Click"/>
+
+                <DataGrid x:Name="dgvGorev" Grid.Row="1" Grid.ColumnSpan="3" Margin="5" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" MouseDoubleClick="dgvGorev_MouseDoubleClick" FontWeight="Normal">
+
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Görev ID" Binding="{Binding GorevID}" Width="100"/>
+                        <DataGridTextColumn Header="Görev" Binding="{Binding GorevAdi}" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</Window>
