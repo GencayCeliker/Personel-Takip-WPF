@@ -54,3 +54,7 @@ Personel-Takip-WPF/
 2. **Veritabanını kurun (SSMS 22):** `Veri Tabanı/dbPersonelTakip_B.sql` dosyasını açıp **Execute (F5)**'e basın.
 3. **Bağlantıyı kontrol edin:** `Data/AppDBContext.cs` içinde `Server=.\SQLEXPRESS;Database=dbPersonelTakip_B` kullanılır.
 4. **Çalıştırın:** `PersonelTakip_B.slnx` dosyasını açın ve **F5** ile başlatın.
+
+## 📄 Lisans
+
+Bu proje [MIT](LICENSE) lisansı altında sunulmuştur.
