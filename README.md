@@ -12,6 +12,19 @@ Personel ve görev tanımlarını yöneten **WPF / .NET 10** uygulaması. Tüm v
 
 ---
 
+## 🎬 Demo
+
+![demo](docs/demo.gif)
+
+İki personel ekleniyor, yeni görev tanımlanıyor ve bir personelin görevi güncelleniyor (tüm işlemler stored procedure ile).
+
+| Personel listesi ve görevler |
+| --- |
+| ![Personel listesi ve görevler](docs/personel-listesi.png) |
+
+> Görüntüler, depodaki kurulum script'iyle kurulan örnek veritabanı üzerinde uygulama çalıştırılarak alınmıştır.
+
+
 ## 🚀 Özellikler
 
 - **Personel:** Ekleme, güncelleme, silme (onaylı), listeleme. Listede bir satıra çift tıklayınca bilgiler forma gelir.
